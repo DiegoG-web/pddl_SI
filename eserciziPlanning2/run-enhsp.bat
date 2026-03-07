@@ -1,7 +1,7 @@
 @echo off
 :: 1. Run the planner
 ::java -jar "%~dp0..\enhsp25.jar" -o %1 -f %2 -planner sat-hadd -sjr
-java -jar "%~dp0enhsp25.jar" -o %1 -f %2 -planner sat-hadd -sjr
+java -jar "%~dp0enhsp25.jar" -o %1 -f %2 -sjr
 
 :: 2. Create the logsPDDL folder if it doesn't already exist
 mkdir "%~dp0logsPDDL" 2>nul
