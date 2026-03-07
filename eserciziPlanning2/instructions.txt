@@ -1,0 +1,12 @@
+To use the automatic pddl execution in vs code
+- install PDDL extention by Jan Dolejsi (if you type domain or problem at the top of a blank .pddl fill it will outocomplete the skeleton)
+- git clone: https://github.com/BrandosQuest/pddlStarterRepo
+- go in one of the domain or problem files, and do ctrl+alt+P
+    >create new planner configuration
+    >select an exe form this pc
+    >select run-enhsp.bat
+- go in one of the domain or problem files, and do alt+P
+    it'll ask to use no options, select that, and it will execute the plan.
+- the output trees will be stored in logsPDDL folder created automatically
+    site to visualize the node tree: 
+    https://clementchamayou.github.io/enhsptree/
