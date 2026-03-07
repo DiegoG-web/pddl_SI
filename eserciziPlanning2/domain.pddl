@@ -2,13 +2,6 @@
 
 (define (domain blockDomain)
     (:requirements :typing :negative-preconditions) ;necessary to remove warnings
-;remove requirements that are not needed
-;(:requirements :strips :fluents :durative-actions :timed-initial-literals :typing :conditional-effects :negative-preconditions :duration-inequalities :equality)
-
-;(:types ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle)
-
-; un-comment following line if constants are needed
-;(:constants )
 
     (:predicates ;todo: define predicates here
         (grasping)
@@ -17,6 +10,8 @@
         (clear ?x) ;oggetto libero al di sotto
         (flying ?x) ; oggetto in aria, non appoggiato, sulla pinza, potrebbe provocare righe onTop superflue
     )
+    ;flying e grasping potrebbero essere ridondanti. RIVEDI
+    ;se è flying non è onTable, si può SNELLIRE
 
     (:action stack
         :parameters (?x ?y)
