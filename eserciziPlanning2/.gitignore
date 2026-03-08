@@ -7,3 +7,6 @@ logsPDDL/
 # Ignora file di sistema di Windows/Mac
 .DS_Store
 Thumbs.db
+
+# Ignora le impostazioni locali di Visual Studio Code
+.vscode/
