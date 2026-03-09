@@ -12,6 +12,7 @@ e
     (connected a c)
     (connected c e)
     (connected c d)
+    
 )
 
 (:goal (and

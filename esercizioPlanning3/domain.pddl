@@ -18,7 +18,7 @@
 (:action moveTo
         :parameters (?x ?y)
         :precondition (and (not (visited ?y)) (lastVisited ?x) (connected ?x ?y))
-        :effect (and (visited ?y) (lastVisited ?y))
+        :effect (and (visited ?y) (not (lastVisited ?x)) (lastVisited ?y))
     )
 
 
