@@ -1,36 +1,28 @@
 ;Header and description
+;Header and description
 
-(define (domain blockDomain)
+(define (domain travelDomain)
     (:requirements :typing :negative-preconditions) ;necessary to remove warnings
 
-    (:predicates ;todo: define predicates here
-        (grasping)
-        (onTop ?x ?y)
-        (onTable ?x)
-        (clear ?x) ;oggetto libero al di sotto
-        (flying ?x) ; oggetto in aria, non appoggiato, sulla pinza, potrebbe provocare righe onTop superflue
-    )
-    ;flying e grasping potrebbero essere ridondanti. RIVEDI
-    ;se è flying non è onTable, si può SNELLIRE
+(:types ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle
+)
 
-    (:action stack
+; un-comment following line if constants are needed
+;(:constants )
+
+(:predicates ;todo: define predicates here
+    (visited ?x)
+    (lastVisited ?x)
+    (connected ?x ?y)
+)
+(:action moveTo
         :parameters (?x ?y)
-        :precondition (and (grasping) (not (onTable ?x)) (clear ?x)(clear ?y) (flying ?x))
-        :effect (and (not (grasping)) (onTop ?x ?y) (not (clear ?y)) (not (flying ?x)))
+        :precondition (and (not (visited ?y)) (lastVisited ?x) (connected ?x ?y))
+        :effect (and (visited ?y) (lastVisited ?y))
     )
-    (:action unstack
-        :parameters (?x ?y)
-        :precondition (and (not (grasping)) (onTop ?x ?y) (clear ?x) (not (clear ?y)) (not (onTable ?x)) (not (flying ?x)))
-        :effect (and (grasping) (not (onTop ?x ?y)) (clear ?y) (flying ?x))
-    )
-    (:action putdown
-        :parameters (?x)
-        :precondition (and (grasping) (not (onTable ?x)) (clear ?x) (flying ?x))
-        :effect (and (not (grasping)) (onTable ?x) (not (flying ?x)))
-    )
-    (:action pickup
-        :parameters (?x)
-        :precondition (and (not (grasping)) (onTable ?x) (clear ?x) (not (flying ?x)))
-        :effect (and (grasping) (not (onTable ?x)) (flying ?x))
-    )
+
+
+
+;define actions here
+
 )
