@@ -1,28 +1,18 @@
-;Header and description
-;Header and description
-
 (define (domain travelDomain)
     (:requirements :typing :negative-preconditions) ;necessary to remove warnings
 
-(:types ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle
-)
-
-; un-comment following line if constants are needed
-;(:constants )
-
-(:predicates ;todo: define predicates here
+(:predicates
     (visited ?x)
-    (lastVisited ?x)
+    (current ?x)
     (connected ?x ?y)
 )
+
 (:action moveTo
         :parameters (?x ?y)
-        :precondition (and (not (visited ?y)) (lastVisited ?x) (connected ?x ?y))
-        :effect (and (visited ?y) (not (lastVisited ?x)) (lastVisited ?y))
-    )
+        :precondition (and (current ?x) (connected ?x ?y))
+        :effect (and (visited ?y)  (not (current ?x)) (current ?y))
+)
 
-
-
-;define actions here
 
 )
+s

@@ -12,18 +12,28 @@ e
     (connected a c)
     (connected c e)
     (connected c d)
-    
+
+    ;superflui? non credo
+    (connected b a)
+
+    (connected c a)
+    (connected e c)
+    (connected d c)
+
+
+
+    (current a)
+    (visited a)
+
 )
 
 (:goal (and
-    ;todo: put the goal condition here
-    (lastVisited a)
+    (current a)
     (visited a)
     (visited b)
     (visited c)
     (visited d)
+    (visited e)
 ))
 
-;un-comment the following line if metric is needed
-;(:metric minimize (???))
 )
