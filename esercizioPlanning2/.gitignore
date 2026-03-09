@@ -1,0 +1,12 @@
+# Ignora la cartella dei log generata automaticamente dal batch
+logsPDDL/
+
+# Ignora tutti i file di log sparsi
+*.sp_log
+
+# Ignora file di sistema di Windows/Mac
+.DS_Store
+Thumbs.db
+
+# Ignora le impostazioni locali di Visual Studio Code
+.vscode/
