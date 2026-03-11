@@ -17,7 +17,7 @@ e
 (clear b)
 (clear c)
 (clear e)
-(not (grasping))
+;(not (grasping))
 
 )
 

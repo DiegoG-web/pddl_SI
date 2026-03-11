@@ -7,7 +7,7 @@
         (grasping)
         (onTop ?x ?y)
         (onTable ?x)
-        (clear ?x) ;oggetto libero al di sotto
+        (clear ?x) ;oggetto libero al di sopra
         (flying ?x) ; oggetto in aria, non appoggiato, sulla pinza, potrebbe provocare righe onTop superflue
     )
     ;flying e grasping potrebbero essere ridondanti. RIVEDI
@@ -15,7 +15,7 @@
 
     (:action stack
         :parameters (?x ?y)
-        :precondition (and (grasping) (not (onTable ?x)) (clear ?x)(clear ?y) (flying ?x))
+        :precondition (and (grasping) (not (onTable ?x)) (clear ?x) (clear ?y) (flying ?x))
         :effect (and (not (grasping)) (onTop ?x ?y) (not (clear ?y)) (not (flying ?x)))
     )
     (:action unstack
