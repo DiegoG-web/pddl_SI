@@ -1,5 +1,5 @@
 (define (domain travelDomain)
-    (:requirements :typing :negative-preconditions :fluents) ;necessary to remove warnings
+    (:requirements :typing :negative-preconditions :fluents) ;necessary to remove warnings. fluents per math
 ; :number-fluents
     (:types
         person
