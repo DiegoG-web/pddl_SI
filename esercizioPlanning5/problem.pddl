@@ -1,4 +1,4 @@
-(define (problem blockProblem) (:domain blockDomain)
+(define (problem blockProblemResources) (:domain blockDomainResources)
 (:objects 
 a
 b
@@ -17,6 +17,7 @@ e
 (clear b)
 (clear c)
 (clear e)
+(= (batteryLevel) 3)
 ;(not (grasping))
 
 )
