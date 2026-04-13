@@ -1,40 +1,40 @@
 (define (problem blockProblemResources) (:domain blockDomainResources)
-(:objects 
-a
-b
-c
-d
-e
-)
+    (:objects 
+        a
+        b
+        c
+        d
+        e - block
+    )
 
-(:init
-    ;todo: put the initial state's facts and numeric values here
-(onTable a)
-(onTable c)
-(onTable d)
-(onTop b a)
-(onTop e d)
-(clear b)
-(clear c)
-(clear e)
-(= (batteryLevel) 3)
-;(not (grasping))
+    (:init
+        ;todo: put the initial state's facts and numeric values here
+        (onTable a)
+        (onTable c)
+        (onTable d)
+        (onTop b a)
+        (onTop e d)
+        (clear b)
+        (clear c)
+        (clear e)
+        (= (batteryLevel) 3)
+        ;(not (grasping))
 
-)
+    )
 
-(:goal (and
-    ;todo: put the goal condition here
-(onTop a c)
-(onTop b a)
-(onTop e d)
-(onTable c)
-(onTable d)
-(clear b)
-(clear e)
-(not (grasping))
-))
+    (:goal (and
+        ;todo: put the goal condition here
+        (onTop a c)
+        (onTop b a)
+        (onTop e d)
+        (onTable c)
+        (onTable d)
+        (clear b)
+        (clear e)
+        (not (grasping))
+    ))
 
-;un-comment the following line if metric is needed
-;(:metric minimize (???))
+    ;un-comment the following line if metric is needed
+    ;(:metric minimize (???))
 )
 

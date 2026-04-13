@@ -45,6 +45,6 @@
     (:action recharge
         :parameters ()
         :precondition (and (not (grasping)))
-        :effect (assign (batteryLevel) 3)
+        :effect (and (assign (batteryLevel) 3)) 
     )
 )
