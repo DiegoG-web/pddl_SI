@@ -1,4 +1,4 @@
-(define (problem travelProblem) (:domain travelDomain)
+(define (problem countingProblem) (:domain countingDomain)
     (:objects 
         a - person
         brando - person

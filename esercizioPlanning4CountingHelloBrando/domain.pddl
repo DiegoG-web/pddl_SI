@@ -1,4 +1,4 @@
-(define (domain travelDomain)
+(define (domain countingDomain)
     (:requirements :typing :negative-preconditions :fluents) ;necessary to remove warnings. fluents per math
 ; :number-fluents
     (:types
