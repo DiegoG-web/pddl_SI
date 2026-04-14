@@ -27,11 +27,11 @@ for /f %%i in ('powershell -Command "Get-Date -format 'yyyyMMdd_HHmmss'"') do se
 
 :: --- OPTION A: THE DRAFTING MODE (Satisficing) ---
 :: Best for everyday coding and testing logic. Finds a working plan quickly using the h_add heuristic.
-java -jar "%~dp0..\enhsp25.jar" -o %1 -f %2 -planner sat-hadd -sjr
+::java -jar "%~dp0..\enhsp25.jar" -o %1 -f %2 -planner sat-hadd -sjr
 
 :: --- OPTION B: THE PERFECTIONIST MODE (Optimal) ---
 :: Best for finding the absolute lowest-cost/battery path. Uses the h_max heuristic. (Warning: Much slower!)
-::java -jar "%~dp0..\enhsp25.jar" -o %1 -f %2 -planner opt-hrmax -sjr
+java -jar "%~dp0..\enhsp25.jar" -o %1 -f %2 -planner opt-hrmax -sjr
 
 :: --- OPTION C: THE EXAM BENCHMARK MODE (Data Collection) ---
 :: Best for testing your 5 scaling instances. Stops after 60s, hides console clutter, and saves the plan to a file.
