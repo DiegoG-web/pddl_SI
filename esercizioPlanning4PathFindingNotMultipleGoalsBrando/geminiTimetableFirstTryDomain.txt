@@ -1,0 +1,74 @@
+(define (domain timetabling)
+    
+    ; We need typing for entities, and action-costs to penalize late hours
+    (:requirements :typing :action-costs)
+    
+    (:types 
+        course room timeslot professor cohort
+    )
+    
+    (:predicates 
+        ; Static constraints (the curriculum rules)
+        (teaches ?p - professor ?c - course)
+        (attends ?s - cohort ?c - course)
+        
+        ; Dynamic state variables (what changes during scheduling)
+        (room_free ?r - room ?t - timeslot)
+        (prof_busy ?p - professor ?t - timeslot)
+        (cohort_busy ?s - cohort ?t - timeslot)
+        (scheduled ?c - course)
+    )
+    
+    (:functions
+        ; The overall badness/penalty of the timetable
+        (total-cost)
+        ; The specific penalty for using a certain timeslot
+        (slot-cost ?t - timeslot)
+    )
+    
+    ; ----------------------------------------------------------------------
+    ; ASSIGN-CLASS: The single action that builds the timetable
+    ; ----------------------------------------------------------------------
+    (:action assign-class
+        :parameters (
+            ?c - course 
+            ?r - room 
+            ?t - timeslot 
+            ?p - professor 
+            ?s - cohort
+        )
+        :precondition (and 
+            ; 1. The course must not be scheduled yet
+            (not (scheduled ?c))
+            
+            ; 2. Curriculum match: This exact prof must teach this exact course
+            (teaches ?p ?c)
+            
+            ; 3. Curriculum match: This exact cohort must attend this course
+            (attends ?s ?c)
+            
+            ; 4. Resource check: The room must be empty at this time
+            (room_free ?r ?t)
+            
+            ; 5. Resource check: The professor must not be teaching elsewhere
+            (not (prof_busy ?p ?t))
+            
+            ; 6. Resource check: The students cannot be in two places at once
+            (not (cohort_busy ?s ?t))
+        )
+        :effect (and 
+            ; The course is successfully scheduled!
+            (scheduled ?c)
+            
+            ; The room is now occupied
+            (not (room_free ?r ?t))
+            
+            ; The professor and the cohort are now busy at this time
+            (prof_busy ?p ?t)
+            (cohort_busy ?s ?t)
+            
+            ; Add the penalty of this specific timeslot to the total cost
+            (increase (total-cost) (slot-cost ?t))
+        )
+    )
+)

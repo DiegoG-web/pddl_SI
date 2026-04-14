@@ -1,0 +1,62 @@
+(define (problem instance-1-proof-of-concept)
+    
+    (:domain timetabling)
+    
+    (:objects 
+        ; 3 Courses
+        c-sistemi-intelligenti c-matematica c-fisica - course
+        
+        ; 1 Room
+        r-aula1 - room
+        
+        ; 4 Timeslots
+        t-09 t-11 t-14 t-16 - timeslot
+        
+        ; 3 Professors
+        p-scala p-rossi p-bianchi - professor
+        
+        ; 1 Cohort
+        info-year3 - cohort
+    )
+    
+    (:init 
+        ; --- THE CURRICULUM ---
+        (teaches p-scala c-sistemi-intelligenti)
+        (teaches p-rossi c-matematica)
+        (teaches p-bianchi c-fisica)
+        
+        (attends info-year3 c-sistemi-intelligenti)
+        (attends info-year3 c-matematica)
+        (attends info-year3 c-fisica)
+        
+        ; --- THE RESOURCES ---
+        ; Aula 1 is available all day
+        (room_free r-aula1 t-09)
+        (room_free r-aula1 t-11)
+        (room_free r-aula1 t-14)
+        (room_free r-aula1 t-16)
+        
+        ; --- THE METRICS / PENALTIES ---
+        (= (total-cost) 0)
+        
+        ; Morning slots are highly desired (low cost)
+        (= (slot-cost t-09) 1)
+        (= (slot-cost t-11) 2)
+        
+        ; Early afternoon is okay, but less ideal
+        (= (slot-cost t-14) 10)
+        
+        ; Late afternoon (16:00 - 18:00) is terrible! High penalty!
+        (= (slot-cost t-16) 50)
+    )
+    
+    (:goal (and
+        ; The goal is simply that all three courses are scheduled somewhere
+        (scheduled c-sistemi-intelligenti)
+        (scheduled c-matematica)
+        (scheduled c-fisica)
+    ))
+    
+    ; Tell the planner to find the timetable with the lowest total penalty
+    (:metric minimize (total-cost))
+)
