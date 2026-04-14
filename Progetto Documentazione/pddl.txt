@@ -1,0 +1,60 @@
+mi ispiro a blockWorld, ogni fascia oraria è un blocco. Può essere libera o occupata da una materia.
+
+Dobbiamo decidere chi sono gli attori e come semplificare (possibile UML). Avrò più corsi da coordinare o l'orario del corso è già deciso e devo decidere come incastrarli (questo utile per studenti che devono scegliere). 
+Attori: Corso, Docente, 
+
+DESCRIVO DOMAIN
+Ogni blocco ha delle caratteristiche: vuoto o occupato (1h per comodità), se è occupato avrà delle proprietà.
+Avrò da lunedì a venerdì dalle 8 alle 19. Pausa pranzo o fissa o a scelta tra 12 o 13
+
+Sistema di punteggio da assegnare alle soluzioni proposte dal planner: (esempi)
+
+PUNTI ++
+Inizio alle 9 +20 pt
+Giorno libero +30 pt
+Giorno libero lunedì/venerdì +20 pt (aggiuntivi)
+Mattina libera +10 pt
+Pomerggio libero +30 pt
+
+PUNTI --
+Fine dopo le 17 -20 pt
+Solo 2 ore in un giorno -20 pt (ma forse superfluo, ci sono già punti per i giorni liberi, forse non serve penalizzare)
+Ore buche -20 pt
+Solo un'ora di una materia -20 pt
+
+Sovrapposizioni materie obbligatorie -70 pt
+Sovrapposizioni obbligatoria-scelta -40 pt
+Sovrapposizioni scelta-scelta -25 pt
+
+
+
+DESCRIVO PROBLEM
+Obiettivo trovare il punteggio migliore (o sopra una soglia minima se richiede troppo sforzo, basta un orario ottimo, non per forza il migliore).
+
+. Pausa pranzo obbligatoria
+. Massimo 8 ore in un giorno
+. Massimo 4 ore della stessa materia in un giorno
+
+
+OGNI VERSIONE SARA' RETROCOMPATIBILE.
+OBIETTIVO RISOLVERE CON LO STESSO DOMAIN PROBLEMI DI CRESCENTE COMPLESSITA'.
+PARTIAMO DA UN'IMPLEMENTAZIONE SEMPLIFICATA AGGIUNGENDO FUNZIONALITA'.
+
+1° versione super easy
+-elenco delle materie con n* di ore
+-un corso di studio (es itid)
+-una sola aula 
+-professore materia 1 a 1
+-pausa pranzo (valutare se metterla)
+Constraints:
+-massimo 8 ore
+
+2° versione easy
+-elenco delle materie con n* di ore
+-un corso di studio (es itid)
+-una sola aula 
+-professore materia 1 a 1
+Constraints:
+-massimo 8 ore
+-pausa pranzo
+-massimo 4 ore di una materia
