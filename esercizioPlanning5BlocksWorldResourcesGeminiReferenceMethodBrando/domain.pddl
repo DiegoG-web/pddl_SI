@@ -112,18 +112,3 @@
         )
     )
 )
-
-; 2. Why are there two graphs? (The Parsing Bug)
-; Here is the smoking gun: Look at the title of the two graphs. They both say battery-level ?a - arm.
-
-; They do not say battery-level robby.
-
-; This tells us exactly what the bug is:
-
-; When the ENHSP planner finishes, it spits out a huge wall of text containing the plan steps, the metric evaluations, and the state trajectories.
-
-; The VS Code extension uses Regular Expressions (Regex) to scan that text and draw the graphs.
-
-; Because the extension fails to properly "ground" the variable (it couldn't figure out that ?a is robby for the chart title), it is falling back to reading the raw domain signature.
-
-; ENHSP likely outputs the numeric state in two different parts of its log (e.g., once in the step-by-step trajectory, and once in a final metric summary). Because the extension's regex is matching the generic signature battery-level ?a - arm, it finds it twice in the log and blindly draws a graph for both matches.

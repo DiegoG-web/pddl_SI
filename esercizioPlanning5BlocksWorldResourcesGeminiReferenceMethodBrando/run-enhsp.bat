@@ -41,6 +41,11 @@ java -jar "%~dp0..\enhsp25.jar" -o %1 -f %2 -planner sat-hadd -sjr
 :: Best when the planner does something weird. Prints the exact state of the universe (and battery) after every step.
 :: java -jar "%~dp0..\enhsp25.jar" -o %1 -f %2 -planner sat-hadd -pt -print_actions
 
+:: --- OPTION E: THE GUI SNAPSHOT MODE ---
+:: Best for your Python UI. Finds a plan, hides the metrics, saves the plan, 
+:: and PRINTS THE FINAL STATE (-pls) so your UI can just draw the final result.
+::java -jar "%~dp0..\enhsp25.jar" -o %1 -f %2 -planner sat-hadd -onlyplan -pls > "%~dp0logsPDDL\final_state_output_%TIMESTAMP%.txt"
+
 
 :: 2. Create the logsPDDL folder if it doesn't already exist
 :: %~dp0 is a Windows variable that means "the exact folder where this .bat file lives".
