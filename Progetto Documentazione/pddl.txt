@@ -9,12 +9,12 @@ Avrò da lunedì a venerdì dalle 8 alle 19. Pausa pranzo o fissa o a scelta tra
 
 Sistema di punteggio da assegnare alle soluzioni proposte dal planner: (esempi)
 
-PUNTI ++
-Inizio alle 9 +20 pt
-Giorno libero +30 pt
+PUNTI ++  --> parleremo solo di costo (alto male)
+Inizio alle 9 +20 pt  --> costo alto se metto inizio in brutto orario
+Giorno libero +30 pt --> costo se occupo un giorno che prima era libero
 Giorno libero lunedì/venerdì +20 pt (aggiuntivi)
-Mattina libera +10 pt
-Pomerggio libero +30 pt
+Mattina libera +10 pt --> costo basso (o zero) se occupo la mattina
+Pomerggio libero +30 pt --> costo alto se occupo il pomeriggio
 
 PUNTI --
 Fine dopo le 17 -20 pt
@@ -58,3 +58,6 @@ Constraints:
 -massimo 8 ore
 -pausa pranzo
 -massimo 4 ore di una materia
+
+
+Dobbiamo creare funzione che toglie il costo o ci pensa il planner quando torna indietro?
